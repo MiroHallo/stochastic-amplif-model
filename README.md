@@ -42,7 +42,7 @@ method to predict site-specific amplification at city scale, Seismological Resea
 2 TECHNICAL IMPLEMENTATION
 ===================
 
-Cross-Platform (Windows, Linux), Stochastic Modeling, Automatic exports
+Cross-Platform (Windows, Linux), Stochastic Modeling, Generates formatted output text files
 
 The official software version is archived on Zenodo:
 
