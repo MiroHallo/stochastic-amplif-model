@@ -9,7 +9,7 @@ of a **Stochastic Model (SM)** designed to quantify ground motion
 amplification. The methodology accounts for uncertainties in subsurface 
 properties by utilizing randomly perturbed 1D velocity models. The 
 amplification is evaluated in the spectral domain and characterized by 1) 
-S/B Spectral Ratio (Amplification), 2) Energy Spectral Density Ratio
+Spectral Ratio (Amplification), 2) Energy Spectral Density Ratio
 (expressed in dB), and 3) Envelope Delay (seconds).
 
 **Applications:**
