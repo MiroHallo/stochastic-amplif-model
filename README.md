@@ -1,4 +1,4 @@
-# Stochastic model to characterize site-specific amplification
+# Stochastic model for site-specific amplification
 Tools suite for characterizing seismic ground motion amplification 
 between ground surface and reference points (depth or rock outcrop)
 including stochastic perturbations of local 1D velocity models.
@@ -8,8 +8,8 @@ This repository provides a comprehensive tools suite for the computation
 of a **Stochastic Model (SM)** designed to quantify ground motion 
 amplification. The methodology accounts for uncertainties in subsurface 
 properties by utilizing randomly perturbed 1D velocity models. The 
-amplification is evaluated in the spectral domain and characterized by 
-1) S/B Spectral Ratio (Amplification), 2) Energy Spectral Density Ratio
+amplification is evaluated in the spectral domain and characterized by 1) 
+S/B Spectral Ratio (Amplification), 2) Energy Spectral Density Ratio
 (expressed in dB), and 3) Envelope Delay (seconds).
 
 **Applications:**
