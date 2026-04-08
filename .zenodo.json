@@ -18,6 +18,18 @@
       "identifier": "10.1785/0120220038",
       "relation": "isSupplementTo",
       "resource_type": "publication-article"
+    },
+    {
+      "scheme": "doi",
+      "identifier": "10.1016/j.soildyn.2023.108089",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    },
+    {
+      "scheme": "doi",
+      "identifier": "10.1785/0220230213",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
     }
   ],
   "language": "eng",
