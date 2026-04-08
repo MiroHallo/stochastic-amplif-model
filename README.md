@@ -35,6 +35,10 @@ Bulletin of the Seismological Society of America, 112 (4), 1997–2017. [https:/
 
 Cross-Platform (Windows, Linux), Stochastic Modeling, Automatic exports
 
+The official software version is archived on Zenodo:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19469179.svg)](https://doi.org/10.5281/zenodo.19469179)
+
 3 PACKAGE CONTENT
 ===================
 
