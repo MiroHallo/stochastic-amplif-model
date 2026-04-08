@@ -51,21 +51,34 @@ The official software version is archived on Zenodo:
 3 PACKAGE CONTENT
 ===================
 
-  1. `SM.m` - Subroutine for computation of the Stochastic Model (SM)
-  2. `RUNSM.m` - Example to run the SM subroutine
+  1. `sm.m` - Subroutine for computation of the Stochastic Model (SM)
+  2. `respSH.m` - Subroutine for computation of the Transfer Function
+  3. `example.m` - Example to run the SM subroutine
 
 4 REQUIREMENTS
 ===================
 
-  MATLAB: Version R2018b-R2022a, Codes do not require any additional Matlab Toolboxes.
+  MATLAB: Tested on version R2018b, R2025b, Codes do not require any additional Matlab Toolboxes.
 
 5 USAGE
 ===================
 
   1. Open MATLAB
-  2. Run the main scripts: `RUNSM.m`
+  2. Run the main scripts: `example.m`
+  3. Check resultant figures `example_output_1.png`, `example_output_2.png`, `example_output_3.png` and text file `example_output.dat`
 
-6 COPYRIGHT
+6 EXAMPLE OUTPUT
+===================
+
+This repository provides routines for evaluating the Stochastic Model (SM). The included example is for illustrative purposes; for full functionality, users should integrate these subroutines into their own projects. The figures below demonstrate a test case using a generic 1D velocity profile. They show the **perturbed 1D velocity models**, the **surface-to-outcrop transfer functions**, and the resultant **Stochastic Model (SM)** with uncertainty quantification (1σ).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="img/SM_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="img/SM_light.png">
+  <img alt="Stochastic Model (SM)" src="img/SM_light.png">
+</picture>
+
+7 COPYRIGHT
 ===================
 
 Copyright (C) 2020-2023 Swiss Seismological Service, ETH Zurich
