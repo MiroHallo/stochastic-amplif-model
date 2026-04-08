@@ -69,12 +69,12 @@ inc1s = 15;
 fMinMaxN = [0.1,50,1000];
 
 % Compute transfer functions for Borehole or Rock Outcrop
-% (Borehole = 1, Outcrop = 0)
+% (Outcrop=0, Borehole=1, Incidence=2)
 BorO = 1;
 
 % Plot figures?
-% (Yes = 1, No = 0)
-PlotFigs = 1;
+% (No = 0, Models = 1, All = 2)
+PlotFigs = 2;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

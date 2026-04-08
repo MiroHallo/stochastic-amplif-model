@@ -30,6 +30,15 @@ Uncertainty Quantification.
 high-frequency ground motion at depth validated by KiK-net vertical array data,
 Bulletin of the Seismological Society of America, 112 (4), 1997–2017. [https://doi.org/10.1785/0120220038](https://doi.org/10.1785/0120220038)
 
+  Hallo, M., Imtiaz, A., Koroni, M., Perron, V., Fäh, D. (2023). Characterization 
+and modeling of ground motion at depth in soft sedimentary rocks: Application to 
+the Swiss Molasse Basin, Soil Dynamics and Earthquake Engineering, 173:108089. 
+[https://doi.org/10.1016/j.soildyn.2023.108089](https://doi.org/10.1016/j.soildyn.2023.108089)
+  
+  Hallo, M., Bergamo, P., Fäh, D. (2024). Multipath transfer-function correction 
+method to predict site-specific amplification at city scale, Seismological Research Letters, 
+95 (1), 172-185. [https://doi.org/10.1785/0220230213](https://doi.org/10.1785/0220230213)
+
 2 TECHNICAL IMPLEMENTATION
 ===================
 
@@ -48,7 +57,7 @@ The official software version is archived on Zenodo:
 4 REQUIREMENTS
 ===================
 
-  MATLAB: Version R2018b, Codes do not require any additional Matlab Toolboxes.
+  MATLAB: Version R2018b-R2022a, Codes do not require any additional Matlab Toolboxes.
 
 5 USAGE
 ===================
@@ -59,7 +68,7 @@ The official software version is archived on Zenodo:
 6 COPYRIGHT
 ===================
 
-Copyright (C) 2020-2022 Swiss Seismological Service, ETH Zurich
+Copyright (C) 2020-2023 Swiss Seismological Service, ETH Zurich
 
 This program is published under the GNU General Public License (GNU GPL).
 

@@ -14,9 +14,10 @@ function [ESDmean,ESDsigma,EDlmean,EDlsigma] = SM(Depth0,Vs0,Rho0,Fox0,...
 % Revision 3/2020: The first version of the function
 % Revision 9/2021: Updated after experiments with real data
 % Revision 5/2022: Adjusted for distribution
-% Tested in Matlab R2018b, R2021a
+% Revision 2/2023: New features for the TransferC purposes
+% Tested in Matlab R2018b, R2021a, R2022a
 %
-% Copyright (C) 2020-2022  Swiss Seismological Service, ETH Zurich
+% Copyright (C) 2020-2023  Swiss Seismological Service, ETH Zurich
 %
 % This program is published under the GNU General Public License (GNU GPL).
 %
@@ -42,10 +43,12 @@ function [ESDmean,ESDsigma,EDlmean,EDlsigma] = SM(Depth0,Vs0,Rho0,Fox0,...
 % RefDepth - Reference depth [m]
 % nM - Number of perturbed models
 % pert1s - Perturbation [%] (shear modulus, density, damping, interfaces)
+%          It can be vector (joint for all layers) or matrix (individual)
+%          Set pert1s(1,1) negative for a direct perturbation of velocity
 % inc1s - Incident angle distribution [deg] (1sigma centered on vertical)
 % fMinMaxN - Frequencies [Hz] of the output curve (min, max, samples)
-% BorO - Borehole or Rock Outcrop? (Borehole = 1, Outcrop = 0)
-% PlotFigs - Plot figures? (Yes = 1, No = 0)
+% BorO - Borehole or Rock Outcrop? (Outcrop=0, Borehole=1, Incidence=2)
+% PlotFigs - Plot figures? (No = 0, Models = 1, All = 2)
 %
 % OUTPUT:
 % ESDmean - S/B Energy Spectral Density ratio [dB]
@@ -72,6 +75,9 @@ if ~isempty(IR)
         Vs0=Vs0(1:IR-1);
         Rho0=Rho0(1:IR-1);
         Fox0=Fox0(1:IR-1);
+        if min(size(pert1s))>1
+            pert1s=pert1s(1:IR-1,:);
+        end
         nL=length(Depth0);
     end
 end
@@ -85,8 +91,14 @@ if inc1s>30
     return
 end
 f=linspace(fMinMaxN(1),fMinMaxN(2),fMinMaxN(3));
-if pert1s(2)<0, nkdens=1; pert1s(2)=pert1s(1);
+if pert1s(1,1)<0, nkvelo=1; pert1s(:,1)=abs(pert1s(:,1));
+else, nkvelo=0; end
+if pert1s(1,2)<0, nkdens=1; pert1s(:,2)=pert1s(:,1);
 else, nkdens=0; end
+perDim=size(pert1s);
+if min(perDim)==1
+    pert1s=repmat(pert1s,nL,1);
+end
 pert1sP=abs(pert1s)./100;
 
 % Compute the Stochastic Model
@@ -96,14 +108,22 @@ Rho=zeros(nM,nL); Rho(1,1:nL)=Rho0;
 Fox=zeros(nM,nL); Fox(1,1:nL)=Fox0;
 G0=(Vs0.^2).*Rho0;
 for mod = 2:nM
-    G=G0.*exp(randn(1,nL)*pert1sP(1));
-    Rho(mod,:)=Rho0.*exp(randn(1,nL)*pert1sP(2));
-    Fox(mod,:)=Fox0.*exp(randn(1,nL)*pert1sP(3));
-    Vs(mod,:)=sqrt(G./Rho(mod,:));
+    Rho(mod,:)=Rho0.*exp(randn(1,nL).*pert1sP(1:nL,2)');
+    Fox(mod,:)=Fox0.*exp(randn(1,nL).*pert1sP(1:nL,3)');
+    if nkvelo==1
+        Vs(mod,:)=Vs0.*exp(randn(1,nL).*pert1sP(1:nL,1)');
+    else
+        G=G0.*exp(randn(1,nL).*pert1sP(1:nL,1)');
+        Vs(mod,:)=sqrt(G./Rho(mod,:));
+    end
     Okt=0;
+    count=0;
+    pertTmp=pert1sP(1:nL,4)';
     while Okt ~= 1
-        Z=sqrt((Depth0.^2).*exp(randn(1,nL)*pert1sP(4)));
+        count=count+1;
+        Z=sqrt((Depth0.^2).*exp(randn(1,nL).*pertTmp));
         if ~sum(sign(diff(Z))<0) && ~sum(Z<0), Okt = 1; end
+        if count>100, pertTmp=pertTmp./2; count = 0; end
     end
     Depth(mod,:)=Z;
 end
@@ -137,8 +157,13 @@ for mod = 1:nM
         B(m+1,1:Nf)=0.5*A(m,1:Nf)*(1-Alp(m)).*exp(1i*Ksh)+ ...
             0.5*B(m,1:Nf)*(1+Alp(m)).*exp(-1i*Ksh);
     end
-    if BorO==1, h2(1:Nf)=(A(1,:)+B(1,:))./(A(nL,:)+B(nL,:));
-    else, h2(1:Nf)=1./A(nL,:); end
+    if BorO==1
+        h2(1:Nf)=(A(1,:)+B(1,:))./(A(nL,:)+B(nL,:));
+    elseif BorO==2
+        h2(1:Nf)=2./A(nL,:);
+    else
+        h2(1:Nf)=1./A(nL,:);
+    end
     Y=conj(h2);
     dfi=[0,diff(unwrap(angle(Y)))/df];
     h1(:,mod)=h2;
@@ -163,7 +188,7 @@ EDlsigma=sqrt(ed1v);
 EDlsigma(isnan(EDlsigma))=0;
 
 % Prepare figures
-if PlotFigs ~= 1
+if PlotFigs < 1
     return
 end
 freqlim=[min(f),max(f)];
@@ -174,7 +199,13 @@ else
     fTi=freqlim;
     fTl={num2str(round(min(f))) num2str(round(max(f)))};
 end
-if BorO==1, rr = 'B'; else, rr = 'O'; end
+if BorO==1
+    rr = 'B';
+elseif BorO==2
+    rr = 'In';
+else
+    rr = 'O';
+end
 lm=zeros(4,min(nM,500),2*nL);
 for mod = 1:min(nM,500)
     lm(1,mod,1:2:2*nL)=Depth(mod,1:end);
@@ -195,7 +226,7 @@ for mod = 2:min(nM,500)
     hold on;
 end
 u(1)=plot(squeeze(lm(2,1,:)),squeeze(lm(1,1,:)),'k--','LineWidth',2);
-legend(u,'Reference','Ensemble','Location','northeast','Interpreter','tex')
+legend(u,'InModel','Ensemble','Location','northeast','Interpreter','tex')
 hold off; set(gca,'Layer','top');
 set(gca,'YDir','reverse'); set(gca,'YLim',[0 RefDepth]);
 xlabel('S-wave velocity (m/s)','Interpreter','tex');
@@ -225,6 +256,9 @@ ylabel('Depth (m)','Interpreter','tex');
 set(gca,'FontSize',10); box on;
 
 % Plot the Stochastic Model
+if PlotFigs < 2
+    return
+end
 figure('Color','w','Units','normalized','OuterPosition',[0.2,0.1,0.6,0.8]);
 subplot(3,1,1)
 ESDtmp=sqrt(10.^(ESDmean./10)); u=[];
