@@ -70,7 +70,7 @@ The official software version is archived on Zenodo:
 6 EXAMPLE OUTPUT
 ===================
 
-This repository provides routines for evaluating the Stochastic Model (SM). The included example is for illustrative purposes; for full functionality, users should integrate these subroutines into their own projects. The figures below demonstrate a test case using a generic 1D velocity profile. They show the **perturbed 1D velocity models**, the **surface-to-outcrop transfer functions**, and the resultant **Stochastic Model (SM)** with uncertainty quantification (1σ).
+This repository provides routines for evaluating the Stochastic Model (SM). The included example is for illustrative purposes; for full functionality, users should integrate these subroutines into their own projects. The figures below demonstrate a test case using a generic 1D velocity profile. They show the **perturbed 1D velocity models**, the **surface-to-outcrop transfer functions**, and the resultant **Stochastic Model (SM)** with uncertainty quantification (1σ and 2σ).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="img/SM_dark.png">
