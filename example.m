@@ -57,7 +57,7 @@ Fox0 = 1./(2*Qs0); % Layer damping ratio
 RefDepth = 110;
 
 % Number of perturbed models (recommended: 100-10000)
-nM = 2000;
+nM = 1000;
 
 % Perturbation 1-sigma [%] (shear modulus, density, damping, interface depth)
 % Set 1-sigma of density into -1 (e.g. [15,-1,15,15]) for correlated
@@ -72,13 +72,13 @@ inc1s = 15;
 
 % Frequencies [Hz] of the output spectral curve
 % (min, max, samples)
-fMinMaxN = [0.1, 50, 1000];
+fMinMaxN = [0.5, 50, 1000];
 
 % Select the Transfer Function type (Outcrop=0, Borehole=1, Incidence=2)
 BorO = 0;
 
-% Plot figures? (No = 0, Models = 1, Transfer Function = 2, SM = 3)
-PlotFigs = 3;
+% Plot figures? (No = 0, Models = 1, All = 2)
+PlotFigs = 2;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

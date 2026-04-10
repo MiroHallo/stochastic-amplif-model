@@ -367,14 +367,7 @@ end
 % Ensemble of Transfer Functions
 figure('Color','w','Units','normalized','OuterPosition',[0.2,0.1,0.6,0.8]);
 
-subplot(2,2,2)
-histogram(th_all,'FaceColor',[0.3 0.3 0.3])
-set(gca,'Layer','top');
-xlabel('Incidence SH-wave angle (deg)')
-ylabel('Occurrence')
-set(gca,'FontSize',10); box on;
-
-subplot(2,2,1)
+subplot(3,2,1)
 hln=[];
 for mod = 2:nM2
     hln(3) = semilogx(f,abs(h_all(:,mod)),'Color',cc(mod,:)); hold on;
@@ -392,7 +385,7 @@ xlabel('Frequency (Hz)')
 ylabel(['S/',rr,' spectral ratio'])
 set(gca,'FontSize',10); box on;
 
-subplot(2,2,3)
+subplot(3,2,3)
 for mod = 2:nM2
     semilogx(f,ESD_all(:,mod),'Color',cc(mod,:)); hold on;
 end
@@ -408,7 +401,7 @@ xlabel('Frequency (Hz)')
 ylabel(['S/',rr,' ESD ratio (dB)'])
 set(gca,'FontSize',10); box on;
 
-subplot(2,2,4)
+subplot(3,2,5)
 for mod = 2:nM2
     loglog(f,ed_all(:,mod),'Color',cc(mod,:)); hold on;
 end
@@ -424,26 +417,23 @@ xlabel('Frequency (Hz)')
 ylabel(['S-',rr,' envelope delay (s)'])
 set(gca,'FontSize',10); box on;
 
-
-%% -------------------------------------------------------------------
-% Plot figure 3
-
-if PlotFigs < 3
-    return
-end
-
+% -------------------------------------------------------------------
 % Stochastic Model
-figure('Color','w','Units','normalized','OuterPosition',[0.2,0.1,0.6,0.8]);
-subplot(3,1,1)
+
+subplot(3,2,2)
 ESD_tmp = sqrt(10.^(ESD_mean./10));
 hln=[];
 hln(1) = semilogx(f,ESD_tmp,'Color','b','Linewidth',2); hold on;
 ESD_tmp = sqrt(10.^((ESD_mean+ESD_sigma)./10));
-hln(2) = semilogx(f,ESD_tmp,':','Color','b','Linewidth',1);
+hln(2) = semilogx(f,ESD_tmp,'--','Color','b','Linewidth',1);
 ESD_tmp = sqrt(10.^((ESD_mean-ESD_sigma)./10));
-semilogx(f,ESD_tmp,':','Color','b','Linewidth',1);
+semilogx(f,ESD_tmp,'--','Color','b','Linewidth',1);
+ESD_tmp = sqrt(10.^((ESD_mean+2*ESD_sigma)./10));
+hln(3) = semilogx(f,ESD_tmp,':','Color','b','Linewidth',0.8);
+ESD_tmp = sqrt(10.^((ESD_mean-2*ESD_sigma)./10));
+semilogx(f,ESD_tmp,':','Color','b','Linewidth',0.8);
 hold off;
-legend(hln,'SM','Error 1\sigma','Location','northwest');
+legend(hln,'SM','Error 1\sigma','Error 2\sigma','Location','northwest');
 set(gca,'Xtick',fTick);
 set(gca,'XtickLabel',fTicklabel);
 set(gca,'Xlim',freqlim);
@@ -452,13 +442,17 @@ xlabel('Frequency (Hz)')
 ylabel(['S/',rr,' spectral ratio'])
 set(gca,'FontSize',10); box on;
 
-subplot(3,1,2)
+subplot(3,2,4)
 ESD_tmp = ESD_mean;
 semilogx(f,ESD_tmp,'Color','b','Linewidth',2); hold on;
 ESD_tmp = ESD_mean+ESD_sigma;
-semilogx(f,ESD_tmp,':','Color','b','Linewidth',1);
+semilogx(f,ESD_tmp,'--','Color','b','Linewidth',1);
 ESD_tmp = ESD_mean-ESD_sigma;
-semilogx(f,ESD_tmp,':','Color','b','Linewidth',1);
+semilogx(f,ESD_tmp,'--','Color','b','Linewidth',1);
+ESD_tmp = ESD_mean+2*ESD_sigma;
+semilogx(f,ESD_tmp,':','Color','b','Linewidth',0.8);
+ESD_tmp = ESD_mean-2*ESD_sigma;
+semilogx(f,ESD_tmp,':','Color','b','Linewidth',0.8);
 hold off;
 set(gca,'Xtick',fTick);
 set(gca,'XtickLabel',fTicklabel);
@@ -468,13 +462,17 @@ xlabel('Frequency (Hz)')
 ylabel(['S/',rr,' ESD ratio (dB)'])
 set(gca,'FontSize',10); box on;
 
-subplot(3,1,3)
+subplot(3,2,6)
 ED_tmp = 10.^ED_mean_log;
-semilogx(f,ED_tmp,'Color','b','Linewidth',2); hold on;
+loglog(f,ED_tmp,'Color','b','Linewidth',2); hold on;
 ED_tmp = 10.^(ED_mean_log+ED_sigma_log);
-semilogx(f,ED_tmp,':','Color','b','Linewidth',1);
+loglog(f,ED_tmp,'--','Color','b','Linewidth',1);
 ED_tmp = 10.^(ED_mean_log-ED_sigma_log);
-semilogx(f,ED_tmp,':','Color','b','Linewidth',1);
+loglog(f,ED_tmp,'--','Color','b','Linewidth',1);
+ED_tmp = 10.^(ED_mean_log+2*ED_sigma_log);
+loglog(f,ED_tmp,':','Color','b','Linewidth',0.8);
+ED_tmp = 10.^(ED_mean_log-2*ED_sigma_log);
+loglog(f,ED_tmp,':','Color','b','Linewidth',0.8);
 hold off;
 set(gca,'Xtick',fTick);
 set(gca,'XtickLabel',fTicklabel);
@@ -483,7 +481,6 @@ xtickangle(0); set(gca,'Layer','top');
 xlabel('Frequency (Hz)')
 ylabel(['S-',rr,' envelope delay (s)'])
 set(gca,'FontSize',10); box on;
-
 
 end
 
