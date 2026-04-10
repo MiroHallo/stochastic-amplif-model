@@ -65,7 +65,7 @@ The official software version is archived on Zenodo:
 
   1. Open MATLAB
   2. Run the main scripts: `example.m`
-  3. Check resultant figures `example_output_1.png`, `example_output_2.png`, `example_output_3.png` and text file `example_output.dat`
+  3. Check resultant files `example_output_1.png`, `example_output_2.png`, and `example_output.dat`
 
 6 EXAMPLE OUTPUT
 ===================
