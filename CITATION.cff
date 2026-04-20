@@ -1,0 +1,93 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Hallo"
+    given-names: "Miroslav"
+    orcid: "https://orcid.org/0000-0001-5865-7767"
+title: "Computational toolkit for stochastic model of site-specific amplification"
+abstract: "Tools suite for characterizing seismic ground motion amplification between ground surface and reference points (depth or rock outcrop)."
+version: "1.4.1"
+doi: "10.5281/zenodo.19469179"
+date-released: "2026-04-20"
+license: GPL-3.0-or-later
+repository-code: "https://github.com/MiroHallo/stochastic-amplif-model"
+keywords:
+  - "seismology"
+  - "amplification"
+  - "site effects"
+  - "seismic hazard"
+  - "uncertainty quantification"
+  - "nuclear safety"
+  - "Monte Carlo simulation"
+  - "stochastic modeling"
+  - "transfer function"
+
+# -------------------------------------------------------------------
+# Preferred citation for GitHub
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Hallo"
+      given-names: "Miroslav"
+      orcid: "https://orcid.org/0000-0001-5865-7767"
+    - family-names: "Bergamo"
+      given-names: "Paolo"
+      orcid: "https://orcid.org/0000-0002-7738-2882"
+    - family-names: "Fäh"
+      given-names: "Donat"
+      orcid: "https://orcid.org/0000-0002-9195-4373"
+  title: "Stochastic Model to Characterize High-Frequency Ground Motion at Depth Validated by KiK-Net Vertical Array Data"
+  journal: "Bulletin of the Seismological Society of America"
+  year: 2022
+  volume: "112"
+  issue: "4"
+  start: 1997
+  end: 2017
+  doi: "10.1785/0120220038"
+
+# -------------------------------------------------------------------
+# Other citations
+references:
+  - type: article
+    authors:
+      - family-names: "Hallo"
+        given-names: "Miroslav"
+        orcid: "https://orcid.org/0000-0001-5865-7767"
+      - family-names: "Imtiaz"
+        given-names: "Afifa"
+        orcid: "https://orcid.org/0000-0001-6687-8690"
+      - family-names: "Koroni"
+        given-names: "Maria"
+        orcid: "https://orcid.org/0000-0003-3070-2356"
+      - family-names: "Perron"
+        given-names: "Vincent"
+      - family-names: "Fäh"
+        given-names: "Donat"
+        orcid: "https://orcid.org/0000-0002-9195-4373"
+    title: "Characterization and modeling of ground motion at depth in soft sedimentary rocks: Application to the Swiss Molasse Basin"
+    journal: "Soil Dynamics and Earthquake Engineering"
+    year: 2023
+    volume: "173"
+    issue: "108089"
+    doi: "10.1016/j.soildyn.2023.108089"
+
+  - type: article
+    authors:
+      - family-names: "Hallo"
+        given-names: "Miroslav"
+        orcid: "https://orcid.org/0000-0001-5865-7767"
+      - family-names: "Bergamo"
+        given-names: "Paolo"
+        orcid: "https://orcid.org/0000-0002-7738-2882"
+      - family-names: "Fäh"
+        given-names: "Donat"
+        orcid: "https://orcid.org/0000-0002-9195-4373"
+    title: "Multipath transfer-function correction method to predict site-specific amplification at city scale"
+    journal: "Seismological Research Letters"
+    year: 2024
+    volume: "95"
+    issue: "1"
+    start: 172
+    end: 185
+    doi: "10.1785/0220230213"

@@ -1,8 +1,8 @@
 # Stochastic model for site-specific amplification
-Tools suite for characterizing seismic ground motion amplification 
-between ground surface and reference points (depth or rock outcrop)
-including stochastic perturbations of local 1D velocity models.
-***************************************
+
+Tools suite for characterizing seismic ground motion amplification between ground surface and reference points (depth or rock outcrop) including stochastic perturbations of local 1D velocity models.
+
+---
 
 This repository provides a comprehensive tools suite for the computation 
 of a **Stochastic Model (SM)** designed to quantify ground motion 
@@ -18,13 +18,12 @@ Spectral Ratio (Amplification), 2) Energy Spectral Density Ratio
 *   **Catastrophe Modeling:** Quantification of site effects and spectral amplification for risk assessment.
 *   **Waveform Prediction:** Full-waveform broadband predictions at various depths.
 
-1 METHODOLOGY
-===================
+## 1 METHODOLOGY
 
 The core of the toolset is based on the computation of 1D transfer functions. By incorporating 
 stochastic perturbations of seismic velocities and layer thicknesses, the model provides a 
 probabilistic view of site response, moving beyond simple deterministic estimates to full 
-Uncertainty Quantification.
+Uncertainty Quantification. The suite uses theory by Hallo et al. (2022, 2023, 2024).
 
   Hallo, M., Bergamo, P., Fäh, D. (2022). Stochastic model to characterize 
 high-frequency ground motion at depth validated by KiK-net vertical array data,
@@ -39,36 +38,31 @@ the Swiss Molasse Basin, Soil Dynamics and Earthquake Engineering, 173:108089.
 method to predict site-specific amplification at city scale, Seismological Research Letters, 
 95 (1), 172-185. [https://doi.org/10.1785/0220230213](https://doi.org/10.1785/0220230213)
 
-2 TECHNICAL IMPLEMENTATION
-===================
+## 2 TECHNICAL IMPLEMENTATION
 
-Cross-Platform (Windows, Linux), Stochastic Modeling, Generates formatted output text files
+Cross-Platform (Windows, Linux, macOS), Stochastic Modeling, Generates formatted output text files
 
 The official software version is archived on Zenodo:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19469179.svg)](https://doi.org/10.5281/zenodo.19469179)
 
-3 PACKAGE CONTENT
-===================
+## 3 PACKAGE CONTENT
 
-  1. `sm.m` - Subroutine for computation of the Stochastic Model (SM)
-  2. `respSH.m` - Subroutine for computation of the Transfer Function
-  3. `example.m` - Example to run the SM subroutine
+1. `sm.m` - Subroutine for computation of the Stochastic Model (SM)
+2. `respSH.m` - Subroutine for computation of the Transfer Function
+3. `example.m` - Example to run the SM subroutine
 
-4 REQUIREMENTS
-===================
+## 4 REQUIREMENTS
 
   MATLAB: Tested on version R2018b, R2025b, Codes do not require any additional Matlab Toolboxes.
 
-5 USAGE
-===================
+## 5 USAGE
 
-  1. Open MATLAB
-  2. Run the main scripts: `example.m`
-  3. Check resultant files `example_output_1.png`, `example_output_2.png`, and `example_output.dat`
+1. Open MATLAB
+2. Run the main scripts: `example.m`
+3. Check resultant files `example_output_1.png`, `example_output_2.png`, and `example_output.dat`
 
-6 EXAMPLE OUTPUT
-===================
+## 6 EXAMPLE OUTPUT
 
 This repository provides routines for evaluating the Stochastic Model (SM). The included example is for illustrative purposes; for full functionality, users should integrate these subroutines into their own projects. The figures below demonstrate a test case using a generic 1D velocity profile. They show the **perturbed 1D velocity models**, the **surface-to-outcrop transfer functions**, and the resultant **Stochastic Model (SM)** with uncertainty quantification (1σ and 2σ).
 
@@ -78,8 +72,7 @@ This repository provides routines for evaluating the Stochastic Model (SM). The 
   <img alt="Stochastic Model (SM)" src="img/SM_light.png">
 </picture>
 
-7 COPYRIGHT
-===================
+## 7 COPYRIGHT
 
 Copyright (C) 2020-2023 Swiss Seismological Service, ETH Zurich
 
@@ -94,5 +87,17 @@ This code is distributed in the hope that it will be useful, but WITHOUT
 ANY WARRANTY. We would like to kindly ask you to acknowledge the authors
 and don't remove their names from the code.
 
-You should have received copy of the GNU General Public License along
+You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
+
+## 8 CITE AS
+
+If you use this tools suite, please cite both the original methodology papers (preferred) and the software version as follows:
+
+### For the methodology and implementation:
+> Hallo, M., Bergamo, P., Fäh, D. (2022). Stochastic model to characterize high-frequency ground motion at depth validated by KiK-net vertical array data. Bulletin of the Seismological Society of America, 112 (4), 1997–2017. [https://doi.org/10.1785/0120220038](https://doi.org/10.1785/0120220038)
+
+> Hallo, M., Bergamo, P., Fäh, D. (2024). Multipath transfer-function correction method to predict site-specific amplification at city scale. Seismological Research Letters, 95 (1), 172-185. [https://doi.org/10.1785/0220230213](https://doi.org/10.1785/0220230213)
+
+### For the specific software version:
+> Hallo, M. (2026). Computational toolkit for stochastic model of site-specific amplification (v1.4.1) [Software]. Zenodo. [https://doi.org/10.5281/zenodo.19469179](https://doi.org/10.5281/zenodo.19469179)
