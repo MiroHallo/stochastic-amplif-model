@@ -2,6 +2,12 @@
 
 Tools suite for characterizing seismic ground motion amplification between ground surface and reference points (depth or rock outcrop) including stochastic perturbations of local 1D velocity models.
 
+<a href="#cite"><img src="https://img.shields.io/badge/CITE%20AS-grey?style=flat" alt="Cite As"></a>
+[![PAPER](https://img.shields.io/badge/PAPER-10.1785%2F0120220038-%23007EC6?style=flat)](https://doi.org/10.1785/0120220038)
+[![SOFTWARE](https://img.shields.io/badge/SOFTWARE-10.5281%2Fzenodo.19469179-%23007EC6?style=flat)](https://doi.org/10.5281/zenodo.19469179)
+
+![MATLAB](https://img.shields.io/badge/MATLAB-%23ED7D31?style=flat)
+
 ---
 
 This repository provides a comprehensive tools suite for the computation 
@@ -40,11 +46,10 @@ method to predict site-specific amplification at city scale, Seismological Resea
 
 ## 2 TECHNICAL IMPLEMENTATION
 
-Cross-Platform (Windows, Linux, macOS), Stochastic Modeling, Generates formatted output text files
-
-The official software version is archived on Zenodo:
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19469179.svg)](https://doi.org/10.5281/zenodo.19469179)
+*  MATLAB language
+*  Cross-Platform (Windows, Linux, macOS)
+*  Stochastic Modeling
+*  Generates formatted output text files
 
 ## 3 PACKAGE CONTENT
 
@@ -90,6 +95,7 @@ and don't remove their names from the code.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 
+<a name="cite"></a>
 ## 8 CITE AS
 
 If you use this tools suite, please cite both the original methodology papers (preferred) and the software version as follows:
