@@ -68,8 +68,7 @@ method to predict site-specific amplification at city scale, Seismological Resea
 3. Check resultant files `example_output_1.png`, `example_output_2.png`, and `example_output.dat`
 
 ### Server Execution
-If you run scripts on a server without a graphical user interface (e.g., Linux cluster, Docker container, or cloud instance):
-* **MATLAB:** Run with `matlab -nodisplay -nosplash -nodesktop -r "run('example.m'); exit;"`
+If you run scripts on a server without a graphical user interface (e.g., Linux cluster, Docker container, or cloud instance), run it with `matlab -nodisplay -nosplash -nodesktop -r "run('example.m'); exit;"`
 
 ## 6 EXAMPLE OUTPUT
 
