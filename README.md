@@ -67,6 +67,10 @@ method to predict site-specific amplification at city scale, Seismological Resea
 2. Run the main scripts: `example.m`
 3. Check resultant files `example_output_1.png`, `example_output_2.png`, and `example_output.dat`
 
+### Server Execution
+If you run scripts on a server without a graphical user interface (e.g., Linux cluster, Docker container, or cloud instance):
+* **MATLAB:** Run with `matlab -nodisplay -nosplash -nodesktop -r "run('example.m'); exit;"`
+
 ## 6 EXAMPLE OUTPUT
 
 This repository provides routines for evaluating the Stochastic Model (SM). The included example is for illustrative purposes; for full functionality, users should integrate these subroutines into their own projects. The figures below demonstrate a test case using a generic 1D velocity profile. They show the **perturbed 1D velocity models**, the **surface-to-outcrop transfer functions**, and the resultant **Stochastic Model (SM)** with uncertainty quantification (1σ and 2σ).
